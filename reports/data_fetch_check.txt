@@ -1,0 +1,16 @@
+MarketLens Data Fetch Check
+
+Status: Raw data fetch completed.
+Timestamp: 2026-07-04 17:24:59.571551
+
+Files created:
+- data/raw/spy_prices.csv
+- data/raw/dgs10_yield.csv
+
+SPY rows: 2136
+DGS10 rows: 2218
+
+Notes:
+- SPY data was fetched using yfinance unless fallback was used.
+- DGS10 data was fetched using the FRED API.
+- This dataset is for educational and portfolio demonstration only.
