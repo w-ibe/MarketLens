@@ -1,0 +1,10 @@
+MarketLens Setup Check
+
+Status: Setup test completed successfully.
+Project root: C:\Users\Wilson\Documents\OpenAI\MarketLens
+Timestamp: 2026-07-04 16:33:09.587865
+
+Checked:
+- Jupyter kernel
+- Python imports
+- Project folders

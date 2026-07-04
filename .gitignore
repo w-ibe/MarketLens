@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Environment files
+.env
+.venv/
+venv/
+marketlens/
+
+# Data files
+data/raw/*.csv
+data/processed/*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Streamlit secrets
+.streamlit/secrets.toml
