@@ -1,0 +1,27 @@
+MarketLens Streamlit Dashboard Check
+
+Status: Streamlit dashboard created and tested.
+
+File created:
+- dashboard/app.py
+
+Input file:
+- data/processed/marketlens_features.csv
+
+Dashboard pages:
+- Market Overview
+- Price and Trend Charts
+- Risk Metrics
+- Macro Comparison
+- Data Table
+
+Charts included:
+- SPY close price with moving averages
+- SPY cumulative return
+- SPY drawdown
+- SPY 20-day rolling volatility
+- SPY RSI 14
+- SPY cumulative return vs DGS10
+
+Note:
+This dashboard is for educational and portfolio demonstration only. It does not prove that any trading or investment strategy is profitable.
