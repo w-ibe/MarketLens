@@ -1,9 +1,19 @@
 from pathlib import Path
+import sys
 
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SRC_DIR = PROJECT_ROOT / "src"
+
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
+from llm_summary import generate_market_summary, get_latest_metrics
 
 
 # ------------------------------------------------------------
@@ -19,7 +29,6 @@ st.set_page_config(
 # ------------------------------------------------------------
 # Paths
 # ------------------------------------------------------------
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = PROJECT_ROOT / "data" / "processed" / "marketlens_features.csv"
 
 
@@ -200,6 +209,7 @@ page = st.sidebar.radio(
         "Price and Trend Charts",
         "Risk Metrics",
         "Macro Comparison",
+        "LLM Market Summary",
         "Data Table",
     ],
 )
@@ -414,6 +424,43 @@ elif page == "Macro Comparison":
         "It does not establish causation or prove predictive power."
     )
 
+# ------------------------------------------------------------
+# Page: LLM Market Summary
+# ------------------------------------------------------------
+elif page == "LLM Market Summary":
+    st.header("LLM Market Summary")
+
+    st.caption(
+        "This page summarizes calculated dashboard metrics only. "
+        "It does not generate forecasts, recommendations, or trading advice."
+    )
+
+    latest_metrics = get_latest_metrics(filtered_data)
+
+    st.subheader("Metrics Sent to Summary Tool")
+    st.json(latest_metrics)
+
+    use_llm = st.checkbox(
+        "Use OpenAI API if available",
+        value=False,
+        help="Leave unchecked to use deterministic fallback mode. Check only if OpenAI API quota is available.",
+    )
+
+    if st.button("Generate Market Summary"):
+        try:
+            summary_text, summary_mode = generate_market_summary(
+                latest_metrics,
+                use_llm=use_llm,
+            )
+
+            st.subheader("Summary Output")
+            st.write(summary_text)
+
+            st.info(f"Summary mode: {summary_mode}")
+
+        except Exception as error:
+            st.error("Market summary could not be generated.")
+            st.exception(error)
 
 # ------------------------------------------------------------
 # Page: Data Table

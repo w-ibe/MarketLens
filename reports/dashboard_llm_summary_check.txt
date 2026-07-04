@@ -1,0 +1,28 @@
+MarketLens Dashboard LLM Summary Check
+
+Status: LLM-ready summary page added to Streamlit dashboard and verified.
+
+Files updated:
+- dashboard/app.py
+- src/llm_summary.py
+
+Dashboard page added:
+- LLM Market Summary
+
+Summary behavior:
+- Uses calculated dashboard metrics only
+- Can attempt OpenAI API summary if selected
+- Falls back safely when API quota is unavailable
+
+Verified result:
+- Metrics JSON displayed
+- Summary output generated
+- Summary mode displayed
+- Current observed mode: fallback_insufficient_quota
+
+Current limitation:
+- Live OpenAI API generation is blocked by insufficient_quota.
+- Fallback summary mode works.
+
+Note:
+This summary is descriptive only and is not investment advice.
