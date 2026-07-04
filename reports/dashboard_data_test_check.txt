@@ -1,0 +1,52 @@
+MarketLens Dashboard Data Test Check
+
+Status: Dashboard data test completed.
+Timestamp: 2026-07-04 18:30:00.685577
+
+Input file:
+- data/processed/marketlens_features.csv
+
+Charts tested:
+- SPY close price with moving averages
+- Cumulative return
+- Drawdown
+- RSI 14
+- DGS10 10-Year Treasury yield
+- Rolling volatility
+
+Latest metrics:
+                      metric                value
+                 latest_date  2026-07-02 00:00:00
+                latest_close           744.780029
+         latest_daily_return            -0.001314
+    latest_cumulative_return             1.771068
+latest_rolling_volatility_20             0.179475
+               latest_rsi_14            54.596661
+             latest_drawdown            -0.019472
+                latest_dgs10                 4.48
+         latest_trend_status Above 50-day average
+
+Correlation table:
+                       daily_return  rolling_volatility_20  rsi_14  drawdown  dgs10
+daily_return                  1.000                  0.026   0.212     0.109 -0.003
+rolling_volatility_20         0.026                  1.000  -0.250    -0.663 -0.205
+rsi_14                        0.212                 -0.250   1.000     0.408 -0.037
+drawdown                      0.109                 -0.663   0.408     1.000 -0.030
+dgs10                        -0.003                 -0.205  -0.037    -0.030  1.000
+
+Dashboard readiness:
+               column  exists  missing_values  missing_percent
+                 date    True               0             0.00
+                close    True               0             0.00
+         daily_return    True               1             0.05
+    cumulative_return    True               0             0.00
+    moving_average_20    True              19             0.89
+    moving_average_50    True              49             2.29
+rolling_volatility_20    True              20             0.94
+               rsi_14    True              14             0.66
+             drawdown    True               0             0.00
+         trend_status    True               0             0.00
+                dgs10    True               0             0.00
+
+Note:
+This dataset and dashboard are for educational and portfolio demonstration only. They do not prove that any trading or investment strategy is profitable.
