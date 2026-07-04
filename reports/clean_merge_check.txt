@@ -1,0 +1,33 @@
+MarketLens Clean and Merge Check
+
+Status: Clean and merge completed.
+Timestamp: 2026-07-04 17:47:36.238615
+
+Input files:
+- data/raw/spy_prices.csv
+- data/raw/dgs10_yield.csv
+
+Output file:
+- data/processed/marketlens_dataset.csv
+
+Rows in final dataset: 2136
+Columns in final dataset: ['date', 'open', 'high', 'low', 'close', 'adj_close', 'volume', 'dgs10']
+
+Date range:
+- Start date: 2018-01-02 00:00:00
+- End date: 2026-07-02 00:00:00
+
+Missing values:
+date         0
+open         0
+high         0
+low          0
+close        0
+adj_close    0
+volume       0
+dgs10        0
+
+Duplicate dates: 0
+
+Note:
+This dataset is for educational and portfolio demonstration only. It does not prove that any trading or investment strategy is profitable.
