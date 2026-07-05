@@ -1,0 +1,27 @@
+MarketLens GitHub Actions Automation Check
+
+Status: GitHub Actions data update workflow created.
+
+Files updated:
+- .github/workflows/update_data.yml
+- .gitignore
+
+Tracked dashboard data:
+- data/processed/marketlens_dataset.csv
+- data/processed/marketlens_features.csv
+
+Workflow behavior:
+- Runs manually through workflow_dispatch
+- Runs weekly on Monday at 07:00 UTC
+- Installs Python dependencies
+- Fetches raw SPY and DGS10 data
+- Cleans and merges data
+- Builds financial feature dataset
+- Verifies generated processed files
+- Commits updated processed data when changes exist
+
+Required GitHub repository secret:
+- FRED_API_KEY
+
+Note:
+Raw CSV files remain ignored. Processed dashboard-ready CSV files are tracked because the deployed dashboard needs them.

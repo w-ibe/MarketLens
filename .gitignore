@@ -12,6 +12,8 @@ marketlens/
 # Data files
 data/raw/*.csv
 data/processed/*.csv
+!data/processed/marketlens_dataset.csv
+!data/processed/marketlens_features.csv
 
 # OS files
 .DS_Store
