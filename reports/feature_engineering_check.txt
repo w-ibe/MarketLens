@@ -1,0 +1,50 @@
+MarketLens Feature Engineering Check
+
+Status: Feature engineering completed.
+Timestamp: 2026-07-04 18:12:36.144400
+
+Input file:
+- data/processed/marketlens_dataset.csv
+
+Output file:
+- data/processed/marketlens_features.csv
+
+Rows in final dataset: 2136
+Columns in final dataset: ['date', 'open', 'high', 'low', 'close', 'adj_close', 'volume', 'dgs10', 'daily_return', 'cumulative_return', 'moving_average_20', 'moving_average_50', 'rolling_volatility_20', 'rsi_14', 'running_max_close', 'drawdown', 'trend_status']
+
+Features added:
+- daily_return
+- cumulative_return
+- moving_average_20
+- moving_average_50
+- rolling_volatility_20
+- rsi_14
+- running_max_close
+- drawdown
+- trend_status
+
+Date range:
+- Start date: 2018-01-02 00:00:00
+- End date: 2026-07-02 00:00:00
+
+Missing values:
+date                      0
+open                      0
+high                      0
+low                       0
+close                     0
+adj_close                 0
+volume                    0
+dgs10                     0
+daily_return              1
+cumulative_return         0
+moving_average_20        19
+moving_average_50        49
+rolling_volatility_20    20
+rsi_14                   14
+running_max_close         0
+drawdown                  0
+trend_status              0
+
+Note:
+This dataset is for educational and portfolio demonstration only. It does not prove that any trading or investment strategy is profitable.
