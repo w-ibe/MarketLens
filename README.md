@@ -223,6 +223,16 @@ FRED_API_KEY=your_fred_api_key_here
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
+By default the LLM summary page uses OpenAI. To use an NVIDIA-hosted model instead (e.g. if OpenAI quota is unavailable), set:
+
+```text
+LLM_PROVIDER=nvidia
+NVIDIA_API_KEY=your_nvidia_api_key_here
+NVIDIA_MODEL=meta/llama-3.1-8b-instruct
+```
+
+`NVIDIA_MODEL` is optional and defaults to `meta/llama-3.1-8b-instruct`. If `LLM_PROVIDER` is unset or set to `openai`, `OPENAI_API_KEY`/`OPENAI_MODEL` are used as before.
+
 Run the data pipeline:
 
 ```powershell

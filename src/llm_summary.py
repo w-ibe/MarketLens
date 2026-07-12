@@ -97,15 +97,32 @@ def generate_market_summary(metrics: dict, use_llm: bool = True) -> tuple[str, s
     if not use_llm:
         return generate_fallback_summary(metrics), "fallback_manual"
 
-    api_key = os.getenv("OPENAI_API_KEY")
-    model = os.getenv("OPENAI_MODEL", "gpt-5.5")
+    provider = os.getenv("LLM_PROVIDER", "openai").strip().lower()
 
-    if not api_key or api_key == "PASTE_YOUR_OPENAI_KEY_HERE":
+    if provider == "nvidia":
+        api_key = os.getenv("NVIDIA_API_KEY")
+        model = os.getenv("NVIDIA_MODEL", "meta/llama-3.1-8b-instruct")
+        base_url = "https://integrate.api.nvidia.com/v1"
+        placeholder = "PASTE_YOUR_NVIDIA_KEY_HERE"
+    else:
+        api_key = os.getenv("OPENAI_API_KEY")
+        model = os.getenv("OPENAI_MODEL", "gpt-5.5")
+        base_url = None
+        placeholder = "PASTE_YOUR_OPENAI_KEY_HERE"
+
+    if not api_key or api_key == placeholder:
         return generate_fallback_summary(metrics), "fallback_missing_api_key"
 
     try:
-        client = OpenAI(api_key=api_key)
+        client = OpenAI(api_key=api_key, base_url=base_url) if base_url else OpenAI(api_key=api_key)
         prompt = build_market_summary_prompt(metrics)
+
+        if provider == "nvidia":
+            response = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            return response.choices[0].message.content, "nvidia_api"
 
         response = client.responses.create(
             model=model,
